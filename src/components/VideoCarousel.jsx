@@ -133,6 +133,7 @@ const VideoCarousel = () => {
                 break;
 
             case "video-last":
+                // ADD "video: 0" to make it automatically restart
                 setVideo((pre) => ({ ...pre, isLastVideo: true }));
                 break;
 

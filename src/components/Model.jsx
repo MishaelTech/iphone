@@ -10,6 +10,9 @@ import { View } from "@react-three/drei";
 import { models, sizes } from "../constants";
 import { animateWithGsapTimeline } from "../utils/animation";
 
+import { ScrollTrigger } from "gsap/all"
+gsap.registerPlugin(ScrollTrigger);
+
 const Model = () => {
     const [size, setSize] = useState('small');
     const [model, setModel] = useState({
@@ -49,7 +52,16 @@ const Model = () => {
     }, [size])
 
     useGSAP(() => {
-        gsap.to('#heading', { y: 0, opacity: 1 })
+        gsap.to('#heading', {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            scrollTrigger: {
+                trigger: "#heading",
+                toggleActions: 'restart reverse restart reverse',
+                start: 'bottom bottom'
+            }
+        })
     }, []);
 
     return (

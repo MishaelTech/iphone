@@ -4,11 +4,33 @@ import { rightImg, watchImg } from "../utils"
 
 import VideoCarousel from "./VideoCarousel"
 
+import { ScrollTrigger } from "gsap/all"
+gsap.registerPlugin(ScrollTrigger);
+
 const Highlights = () => {
     useGSAP(() => {
-        gsap.to('#title', { opacity: 1, y: 0, duration: 2 })
+        gsap.to('#title', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            scrollTrigger: {
+                trigger: "#title",
+                toggleActions: 'restart reverse restart reverse',
+                start: 'bottom bottom'
+            }
+        })
 
-        gsap.to('.link', { opacity: 1, y: 0, duration: 2, stagger: 0.25 })
+        gsap.to('.link', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.25,
+            scrollTrigger: {
+                trigger: '.link',
+                toggleActions: 'restart reverse restart reverse',
+                start: 'bottom bottom'
+            }
+        })
     })
 
     return (
